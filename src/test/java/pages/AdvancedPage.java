@@ -42,59 +42,13 @@ public class AdvancedPage extends BasePage {
         driver.findElement(KEY_WORDS).sendKeys(words);
     }
 
-    public void getListOfProf() {
-        driver.findElement(PROF_AREA).click();
-        String[] profAreas = new String[driver.findElements(CHECKBOX).size()];
-        for (int i = 0; i < profAreas.length; i++) {
-            profAreas[i] = driver.findElements(CHECKBOX).get(i).getText();
-        }
-        for (int i = 39; i < profAreas.length; i++) {
-            System.out.println(i - 39 + ". " + profAreas[i]);
-        }
-    }
-
-    public void setProfession(String indexes) {
-        String[] array = indexes.split(" ");
-        int[] prof = new int[array.length];
-        for (int i = 0; i < prof.length; i++) {
-            WebElement chb = driver.findElements(CHECKBOX).get(prof[i] + 39);
-            actions.moveToElement(chb).perform();
-            chb.click();
-            driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        }
-        driver.findElement(CHOOSE_BUTTON).click();
-    }
-
-    public void getListOfIndustries() {
-        driver.findElement(INDUSTRY).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@placeholder='Быстрый поиск']")));
-        String[] industries = new String[driver.findElements(CHECKBOX).size()];
-        for (int i = 0; i < industries.length; i++) {
-            industries[i] = driver.findElements(CHECKBOX).get(i).getText();
-        }
-        for (int i = 0; i < industries.length; i++) {
-            System.out.println(i + ". " + industries[i]);
-        }
-    }
-
-    public void setIndustries(String indexes) {
-
-    }
-
-    public void setSalary(String salary) {
+    public void setSalary (String salary) {
         driver.findElement(SALARY).sendKeys(salary);
     }
 
-    public void setSalaryNecc(String userAns) {
+    public void setSalaryNecc (String userAns) {
         if (userAns.equals("0")) {
             driver.findElement(NECESSARY_SLR).click();
-        }
-    }
-
-    public void getExp() {
-        System.out.println("Какой у вас опыт работы?");
-        for (int i = 0; i < driver.findElements(EXPERIENCE).size(); i++) {
-            System.out.println(i + ". " + driver.findElements(By.xpath("//span[@class='bloko-radio__text']")).get(i).getText());
         }
     }
 
@@ -102,13 +56,6 @@ public class AdvancedPage extends BasePage {
         WebElement checkbox = driver.findElements(EXPERIENCE).get(Integer.parseInt(i));
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", checkbox);
-    }
-
-    public void getTypesOfEmployment() {
-        System.out.println("Типы занятости:");
-        for (int i = 0; i < driver.findElements(By.xpath("//label[contains(@data-qa,'control-vacancysearch__employment-item control-vacancysearch__employment-item')]")).size(); i++) {
-            System.out.println(i + ". " + driver.findElements(By.xpath("//label[contains(@data-qa,'control-vacancysearch__employment-item control-vacancysearch__employment-item')]")).get(i).getText());
-        }
     }
 
     public void setTypeOfEmployment(String indexes) {
@@ -121,13 +68,6 @@ public class AdvancedPage extends BasePage {
         }
     }
 
-    public void getSchedule() {
-        System.out.println("График работы:");
-        for (int i = 0; i < driver.findElements(By.xpath("//label[contains(@data-qa,'control-vacancysearch__schedule-item control-vacancysearch__schedule-item')]")).size(); i++) {
-            System.out.println(i + ". " + driver.findElements(By.xpath("//label[contains(@data-qa,'control-vacancysearch__schedule-item control-vacancysearch__schedule-item')]")).get(i).getText());
-        }
-    }
-
     public void setSchedule(String indexes) {
         String[] ind = indexes.split(" ");
         int[] arr = new int[ind.length];
@@ -135,13 +75,6 @@ public class AdvancedPage extends BasePage {
             WebElement checkbox = driver.findElements(SCHEDULE).get(Integer.parseInt(ind[i]));
             JavascriptExecutor executor = (JavascriptExecutor) driver;
             executor.executeScript("arguments[0].click();", checkbox);
-        }
-    }
-
-    public void getTimeOfVacancies() {
-        System.out.println("Вывести вакансии:");
-        for (int i = 0; i < driver.findElements(By.xpath("//label[contains(@data-qa,'control-vacancysearch__searchperiod-item control-vacancysearch__searchperiod-item')]")).size(); i++) {
-            System.out.println(i + ". " + driver.findElements(By.xpath("//label[contains(@data-qa,'control-vacancysearch__searchperiod-item control-vacancysearch__searchperiod-item')]")).get(i).getText());
         }
     }
 

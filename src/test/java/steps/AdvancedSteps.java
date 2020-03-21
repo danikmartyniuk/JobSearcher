@@ -16,56 +16,33 @@ public class AdvancedSteps {
         return this;
     }
 
-    public AdvancedSteps sendKeyWords () {
-        String words = "QA Automation";
+    public AdvancedSteps keyWords (String words) {
         advancedPage.sendKeyWords(words);
         return this;
     }
 
-    public AdvancedSteps chooseProf () {
-        advancedPage.getListOfProf();
-        String indexes = "1 5 6 9";
-        advancedPage.setProfession(indexes);
-        return this;
-    }
-
-    public AdvancedSteps chooseIndustry () {
-        advancedPage.getListOfIndustries();
-        return this;
-    }
-
-    public AdvancedSteps setSalary () {
-        String salary = "450";
-        String userAnw = "1";
+    public AdvancedSteps setSalary (String salary, String userAnsw) {
         advancedPage.setSalary(salary);
-        advancedPage.setSalaryNecc(userAnw);
+        advancedPage.setSalaryNecc(userAnsw);
         return this;
     }
 
-    public AdvancedSteps setExperience () {
-        advancedPage.getExp();
-        String exp = "2";
+    public AdvancedSteps setExperience (String exp) {
         advancedPage.setExperience(exp);
         return this;
     }
 
-    public AdvancedSteps setSchedule () {
-        advancedPage.getSchedule();
-        String indexes = "1 4";
+    public AdvancedSteps setSchedule (String indexes) {
         advancedPage.setSchedule(indexes);
         return this;
     }
 
-    public AdvancedSteps setTypeOfEmpl () {
-        advancedPage.getTypesOfEmployment();
-        String indexes = "0 3";
+    public AdvancedSteps setTypeOfEmployment (String indexes) {
         advancedPage.setTypeOfEmployment(indexes);
         return this;
     }
 
-    public AdvancedSteps vacPeriod () {
-        advancedPage.getTimeOfVacancies();
-        String index = "2";
+    public AdvancedSteps vacPeriod (String index) {
         advancedPage.timeOfVacancies(index);
         return this;
     }
@@ -74,4 +51,5 @@ public class AdvancedSteps {
         advancedPage.find();
         return this;
     }
+
 }
