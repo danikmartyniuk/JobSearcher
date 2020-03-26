@@ -6,15 +6,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.concurrent.TimeUnit;
-
 public class AdvancedPage extends BasePage {
 
     private static final By WANT_WORK = By.xpath("//a[@data-qa='mainmenu_wantwork']");
     private static final By KEY_WORDS = By.xpath("//input[@data-qa='vacancysearch__keywords-input']");
-    private static final By PROF_AREA = By.xpath("//button[@data-qa='profarea-changeFromList']");
-    private static final By CHECKBOX = By.xpath("//input[@data-qa='bloko-tree-selector-input']");
-    private static final By INDUSTRY = By.xpath("//span[@data-qa='industry-addFromList']");
     private static final By SALARY = By.xpath("//input[@data-qa='vacancysearch__compensation-input']");
     private static final By NECESSARY_SLR = By.xpath("//label[@data-qa='control-vacancysearch__only-with-compensation control-vacancysearch__only-with-compensation_true']");
     private static final By EXPERIENCE = By.name("experience");

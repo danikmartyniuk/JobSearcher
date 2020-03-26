@@ -1,15 +1,11 @@
 package tests;
 
-import models.JobSeeker;
 import org.testng.annotations.Test;
 
 public class MainTest extends BaseTest {
 
-    @Test
+    @Test (description = "Input parameters of job seeker", priority = 1)
     public void findJob() {
-
-        JobSeeker user = new JobSeeker("QA Automation", "500", "1", "1", "1 4", "0 3", "2");
-
         mainSteps.findJob();
         advancedSteps
                 .openParameters()
@@ -20,6 +16,13 @@ public class MainTest extends BaseTest {
                 .setTypeOfEmployment(user.getTypeOfEmployment())
                 .vacPeriod(user.getVacPeriod())
                 .approve();
+    }
+
+    @Test (description = "Getting the appropriate list of job for user", priority = 2)
+    public void getListOfJobs() {
+        resultsSteps
+                .openResults()
+                .getVacInfo();
     }
 
 }
