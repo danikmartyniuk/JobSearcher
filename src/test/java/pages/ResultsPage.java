@@ -3,6 +3,9 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import utils.FilesWriter;
+
+import java.io.IOException;
 
 public class ResultsPage extends BasePage {
 
@@ -42,7 +45,7 @@ public class ResultsPage extends BasePage {
     }
 
     public String[] getSalaries() {
-        String[] salaries = new String[45];
+        String[] salaries = new String[20];
         for (int i = 0; i < salaries.length; i++) {
             salaries[i] = driver.findElements(SALARY).get(i).getText();
         }
@@ -50,16 +53,17 @@ public class ResultsPage extends BasePage {
     }
 
     public String[] getLinks() {
-        String[] jobLinks = new String[45];
+        String[] jobLinks = new String[20];
         for (int i = 0; i < jobLinks.length; i++) {
             jobLinks[i] = driver.findElements(VACANCY_NAME).get(i).getAttribute("href");
         }
         return jobLinks;
     }
 
-    public void getFullInfo(String[] names, String[] employers, String[] salaries, String[] links) {
-        for (int i = 0; i < 45; i++) {
-            System.out.println(String.format("%s. %s, %s, %s, %s", i+1, names[i], employers[i], salaries[i], links[i]));
+    public void getFullInfo(String[] names, String[] employers, String[] salaries, String[] links) throws IOException {
+        for (int i = 0; i < 20; i++) {
+            FilesWriter.writeResultsFile(String.format("%s. %s, %s, %s, %s", i+1, names[i], employers[i], salaries[i], links[i]));
         }
     }
+
 }
