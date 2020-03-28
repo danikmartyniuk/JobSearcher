@@ -7,7 +7,11 @@ import steps.AdvancedSteps;
 import steps.MainSteps;
 import steps.ResultsSteps;
 import utils.CapabilitiesGenerator;
+import utils.FilesWriter;
 import utils.TestListener;
+
+import javax.swing.*;
+import java.io.IOException;
 
 @Listeners({TestListener.class})
 public class BaseTest {
@@ -27,8 +31,10 @@ public class BaseTest {
     }
 
     @AfterClass
-    public void close () {
+    public void close () throws IOException {
         driver.quit();
+        FilesWriter.cleanFile();
+        JOptionPane.showMessageDialog(null, "Список вакансий находится в фвйле jobresults.txt. Спасибо за использование!");
     }
 
     public WebDriver getDriver() {

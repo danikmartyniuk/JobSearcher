@@ -27,4 +27,12 @@ public class FilesWriter {
     public static String readFromFile (int line) throws IOException {
         return Files.readAllLines(Paths.get("userAnswers.txt")).get(line);
     }
+
+    public static void cleanFile () throws IOException {
+        FileWriter fwOb = new FileWriter("userAnswers.txt", false);
+        PrintWriter pwOb = new PrintWriter(fwOb, false);
+        pwOb.flush();
+        pwOb.close();
+        fwOb.close();
+    }
 }
