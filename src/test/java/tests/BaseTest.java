@@ -33,7 +33,7 @@ public class BaseTest {
     @AfterClass
     public void close () throws IOException {
         driver.quit();
-        FilesWriter.cleanFile();
+        FilesWriter.cleanFile("userAnswers.txt");
         JOptionPane.showMessageDialog(null, "Список вакансий находится в фвйле jobresults.txt. Спасибо за использование!");
     }
 

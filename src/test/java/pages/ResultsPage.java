@@ -29,7 +29,7 @@ public class ResultsPage extends BasePage {
     }
 
     public String[] getVacNames() {
-        String[] names = new String[45];
+        String[] names = new String[driver.findElements(VACANCY_NAME).size()];
         for (int i = 0; i < names.length; i++) {
             names[i] = driver.findElements(VACANCY_NAME).get(i).getText();
         }
@@ -37,7 +37,7 @@ public class ResultsPage extends BasePage {
     }
 
     public String[] getEmployers() {
-        String[] employers = new String[45];
+        String[] employers = new String[driver.findElements(EMPLOYER).size()];
         for (int i = 0; i < employers.length; i++) {
             employers[i] = driver.findElements(EMPLOYER).get(i).getText();
         }
@@ -45,7 +45,7 @@ public class ResultsPage extends BasePage {
     }
 
     public String[] getSalaries() {
-        String[] salaries = new String[20];
+        String[] salaries = new String[driver.findElements(SALARY).size()];
         for (int i = 0; i < salaries.length; i++) {
             salaries[i] = driver.findElements(SALARY).get(i).getText();
         }
@@ -53,17 +53,19 @@ public class ResultsPage extends BasePage {
     }
 
     public String[] getLinks() {
-        String[] jobLinks = new String[20];
+        String[] jobLinks = new String[driver.findElements(VACANCY_NAME).size()];
         for (int i = 0; i < jobLinks.length; i++) {
             jobLinks[i] = driver.findElements(VACANCY_NAME).get(i).getAttribute("href");
         }
         return jobLinks;
     }
 
-    public void getFullInfo(String[] names, String[] employers, String[] salaries, String[] links) throws IOException {
-        for (int i = 0; i < 20; i++) {
+    public void getFullInfo(String[] names, String[] employers, String[] salaries, String[] links) throws IOException, ArrayIndexOutOfBoundsException {
+        int length = Math.min(Math.min(names.length, employers.length), Math.min(salaries.length, links.length));
+        for (int i = 0; i < length; i++) {
             FilesWriter.writeResultsFile(String.format("%s. %s, %s, %s, %s", i+1, names[i], employers[i], salaries[i], links[i]));
         }
+        FilesWriter.writeResultsFile("Это всё, что удалось найти :(");
     }
 
 }

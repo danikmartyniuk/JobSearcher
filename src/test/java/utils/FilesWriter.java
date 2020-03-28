@@ -28,8 +28,8 @@ public class FilesWriter {
         return Files.readAllLines(Paths.get("userAnswers.txt")).get(line);
     }
 
-    public static void cleanFile () throws IOException {
-        FileWriter fwOb = new FileWriter("userAnswers.txt", false);
+    public static void cleanFile (String fileName) throws IOException {
+        FileWriter fwOb = new FileWriter(fileName, false);
         PrintWriter pwOb = new PrintWriter(fwOb, false);
         pwOb.flush();
         pwOb.close();
